@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --clr: #7b2ae2;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f6f7fa;
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+}
+
+.wrapper {
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0px 5px 10px rgb(0 0 0 / .1);
+    border-radius: 10px;
+    caret-color: transparent;
+}
+
+.wrapper .game {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.wrapper .game img:first-child {
+    transform: rotate(90deg);
+}
+
+.wrapper .game img:last-child {
+    transform: rotate(-90deg);
+}
+
+.wrapper .game img {
+    width: 80px;
+    height: 100px;
+    animation-iteration-count: infinite;
+    animation-duration: 400ms;
+    animation-direction: alternate;
+}
+
+.wrapper .game.playing img:first-child {
+    animation-name: playing-left-palm;
+}
+
+@keyframes playing-left-palm {
+    to {
+        transform: rotate(100deg);
+    }
+}
+
+.wrapper .game.playing img:last-child {
+    animation-name: playing-right-palm;
+}
+
+@keyframes playing-right-palm {
+    to {
+        transform: rotate(-100deg);
+    }
+}
+
+.wrapper .result {
+    display: block;
+    color: var(--clr);
+    text-align: center;
+    margin: 20px 0;
+    font-size: 25px;
+}
+
+.wrapper .controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.wrapper .controls img {
+    width: 50px;
+    height: 60px;
+    opacity: .5;
+    cursor: pointer;
+
+    transition: opacity 400ms;
+}
+
+.wrapper>.game:not(.game.playing)~.controls img:hover,
+.wrapper .controls img.active {
+    opacity: 1;
+}
+
+.wrapper>.playing~.controls img {
+    pointer-events: none;
+}
